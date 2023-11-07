@@ -1,0 +1,20 @@
+name: CI
+
+# 触发事件，这里设置的是每次 push 或者 pull request 到 master 分支时触发
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# 任务
+jobs:
+  build:
+    # 运行环境
+    runs-on: ubuntu-latest
+    steps:
+    # 检出代码
+    - uses: actions/checkout@v2
+    # 运行编译命令，根据实际情况修改
+    - name: Run build
+      run: npm install && npm run build
